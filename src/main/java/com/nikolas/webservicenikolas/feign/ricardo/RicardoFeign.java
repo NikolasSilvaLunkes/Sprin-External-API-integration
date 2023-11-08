@@ -6,17 +6,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "RicardoFeign", url = "${feign.caua.url}")
+@FeignClient(name = "RicardoFeign", url = "${feign.ricardo.url}")
 public interface RicardoFeign {
 
 
-    @GetMapping("/clientes")
-    List<CauaPessoa> getPessoas(
-            @RequestParam(value = "id") String id,
-            @RequestParam(value = "pwd") String pwd);
-
-    @GetMapping("/produtos")
-    String getProdutos(
-            @RequestParam(value = "id") String id,
+    @GetMapping("/usuarios_ws.php")
+    List<RicardoPessoa> getPessoas(
+            @RequestParam(value = "cdu") String cdu,
             @RequestParam(value = "pwd") String pwd);
 }

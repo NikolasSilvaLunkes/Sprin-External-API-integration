@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class RicardoDataSync {
+public class FelipeDataSync {
 
     @Autowired
     private RicardoFeign ricardoFeign;
