@@ -2,8 +2,10 @@ package com.nikolas.webservicenikolas.generic.classes;
 
 import com.nikolas.webservicenikolas.generic.interfaces.IDefaultController;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 public abstract class DefaultController<T extends DefaultModel, S extends DefaultService<T>> implements IDefaultController<T, S> {
 
-    private final S service;
+    @Getter
+    @Setter
+    public final S service;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -21,11 +25,9 @@ public abstract class DefaultController<T extends DefaultModel, S extends Defaul
         return entities;
     }
 
-    @GetMapping("/filtrado")
-    @ResponseStatus(HttpStatus.OK)
-    public List<T> filtrado(@RequestBody Specification<T> especificacao, @RequestBody Pageable page) {
-        List<T> entities = service.listaFiltrada(especificacao, page);
-        return entities;
+    @QueryMapping
+    public T byId(@Argument Long id) {
+        return service.buscaPorId(id);
     }
 
     @GetMapping("/{id}")

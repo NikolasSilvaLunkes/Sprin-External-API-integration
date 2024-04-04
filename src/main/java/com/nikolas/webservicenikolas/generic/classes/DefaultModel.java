@@ -1,7 +1,7 @@
 package com.nikolas.webservicenikolas.generic.classes;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import com.nikolas.webservicenikolas.model.Usuario;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,10 +15,12 @@ import java.time.LocalDateTime;
 @Data
 public abstract class DefaultModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private LocalDateTime dataCriacao;
 
-    private String baseServidorIntegrado;
+    @ManyToOne
+    private Usuario operador;
 
 }
