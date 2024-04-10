@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/usuario")
-public class ControllerUsuario extends DefaultController<Usuario, UsuarioService> {
-    public ControllerUsuario(UsuarioService service) {
+public class UsuarioController extends DefaultController<Usuario, UsuarioService> {
+    public UsuarioController(UsuarioService service) {
         super(service);
     }
 }

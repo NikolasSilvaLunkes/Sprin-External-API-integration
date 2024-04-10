@@ -19,5 +19,6 @@ public class ValorCaixa extends DefaultModel {
     private BigDecimal indice;
 
     private PorcentagemValor porcentagemValor;
+    
 }
 

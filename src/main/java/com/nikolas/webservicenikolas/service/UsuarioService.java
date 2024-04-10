@@ -7,4 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioService extends DefaultService<Usuario> {
+
+    Usuario findByUsername(String username) {
+        return null;
+    }
 }
